@@ -12,7 +12,7 @@ page = agent.get("http://www.congreso.es/portal/page/portal/Congreso/Congreso/Di
 
 diputados_link = []
 
-while false
+while true
   diputados_link.concat(page.links_with(href: /fichaDiputado/))
   next_page_link = page.link_with(text: /Siguiente/)
   break if next_page_link == nil

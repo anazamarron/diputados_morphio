@@ -20,12 +20,13 @@ while false
 end
 
 page = agent.get("http://www.congreso.es/portal/page/portal/Congreso/Congreso/Diputados/BusqForm?_piref73_1333155_73_1333154_1333154.next_page=/wc/fichaDiputado?idDiputado=268&idLegislatura=10")
-
-nombe_dip = page.search('div.nombredip').text
+nombre_dip = page.search('div.nombredip').text
 #twitter_dip = page.searc()
 curriculum = page.search('div.curriculum')
 
-email_dip = curriculum.search('a[href*=mailto]').text.strip
+email_dip = curriculum.search('a[href*=mailto]')
+email = email_dip ? email_dip.text.strip : '-'
+
 puts "#{nombre_dip} #{email_dip}"
 
 #

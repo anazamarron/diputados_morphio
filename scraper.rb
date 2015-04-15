@@ -16,7 +16,7 @@ while true
   diputados_link.concat(page.links_with(href: /fichaDiputado/))
   next_page_link = page.link_with(text: /Siguiente/)
   break if next_page_link == nil
-  page = next_page.click
+  page = next_page_link.click
 end
 
 diputados_link.each do |diputado|

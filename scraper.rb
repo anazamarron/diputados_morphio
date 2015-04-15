@@ -22,13 +22,14 @@ end
 diputados_link.each do |diputado|
   page = diputado.click
   nombre_dip = page.search('div.nombre_dip').text
-  #twitter_dip = page.searc()
   curriculum = page.search('div#curriculum')
-
+  
+  twitter_dip = curriculum.search('a[href*=twitter]')
+  twitter = twitter_dip ? twitter_dip.href : '-'
   email_dip = curriculum.search('a[href*=mailto]')
   email = email_dip ? email_dip.text.strip : '-'
 
-  puts "#{nombre_dip} #{email}"
+  puts "nombre: '#{nombre_dip}', email: '#{email}' , twitter: '#{twitter}'"
 end
 #
 # # Find somehing on the page using css selectors

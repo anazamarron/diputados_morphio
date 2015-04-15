@@ -10,15 +10,13 @@ agent = Mechanize.new
 # # Read in a page
 page = agent.get("http://www.congreso.es/portal/page/portal/Congreso/Congreso/Diputados?_piref73_1333056_73_1333049_1333049.next_page=/wc/menuAbecedarioInicio&tipoBusqueda=completo&idLegislatura=10")
 
-page.links.each do |link|
- puts link.text
-end
-
-
-
-
-page.links_with(href: /fichaDiputado/).each do |link|
- puts link.text
+while true
+ page.links_with(href: /fichaDiputado/).each do |link|
+  puts link.text
+ end
+ next_page_link = page.link_with(href: /Siguiente/)
+ break if next_page_link == nil
+ page = next_page.click
 end
 #
 # # Find somehing on the page using css selectors

@@ -10,14 +10,23 @@ agent = Mechanize.new
 # # Read in a page
 page = agent.get("http://www.congreso.es/portal/page/portal/Congreso/Congreso/Diputados?_piref73_1333056_73_1333049_1333049.next_page=/wc/menuAbecedarioInicio&tipoBusqueda=completo&idLegislatura=10")
 
-while true
- page.links_with(href: /fichaDiputado/).each do |link|
-  puts link.text
- end
- next_page_link = page.link_with(href: /Siguiente/)
- break if next_page_link == nil
- page = next_page.click
+diputados_link = []
+
+while false
+  diputados_link.concat(page.links_with(href: /fichaDiputado/))
+  next_page_link = page.link_with(text: /Siguiente/)
+  break if next_page_link == nil
+  page = next_page.click
 end
+
+page = agent.get("http://www.congreso.es/portal/page/portal/Congreso/Congreso/Diputados/BusqForm?_piref73_1333155_73_1333154_1333154.next_page=/wc/fichaDiputado?idDiputado=268&idLegislatura=10")
+
+nombe_dip = page.search('div.nombredip').text
+twitter_dip = page.searc()
+curriculum = page.search('div.curriculum')
+email = curriculum.search(href: /mailto/).text
+puts email
+
 #
 # # Find somehing on the page using css selectors
 #p page.at('div.listado1')

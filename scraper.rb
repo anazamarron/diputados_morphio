@@ -13,7 +13,7 @@
 # p page.at('div.content')
 #
 # # Write out to the sqlite database using scraperwiki library
-# ScraperWiki.save_sqlite(["name"], {"name" => "susan", "occupation" => "software developer"})
+ ScraperWiki.save_sqlite(["name"], {"name" => "Perry", "occupation" => "software developer"})
 #
 # # An arbitrary query against the database
 # ScraperWiki.select("* from data where 'name'='peter'")

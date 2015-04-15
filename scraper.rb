@@ -19,16 +19,17 @@ while false
   page = next_page.click
 end
 
-page = agent.get("http://www.congreso.es/portal/page/portal/Congreso/Congreso/Diputados/BusqForm?_piref73_1333155_73_1333154_1333154.next_page=/wc/fichaDiputado?idDiputado=268&idLegislatura=10")
-nombre_dip = page.search('div.nombredip').text
-#twitter_dip = page.searc()
-curriculum = page.search('div.curriculum')
+diputados_link.each do |diputado|
+  page = diputado.click
+  nombre_dip = page.search('div.nombre_dip').text
+  #twitter_dip = page.searc()
+  curriculum = page.search('div#curriculum')
 
-email_dip = curriculum.search('a[href*=mailto]')
-email = email_dip ? email_dip.text.strip : '-'
+  email_dip = curriculum.search('a[href*=mailto]')
+  email = email_dip ? email_dip.text.strip : '-'
 
-puts "#{nombre_dip} #{email_dip}"
-
+  puts "#{nombre_dip} #{email}"
+end
 #
 # # Find somehing on the page using css selectors
 #p page.at('div.listado1')

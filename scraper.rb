@@ -13,6 +13,13 @@ page = agent.get("http://www.congreso.es/portal/page/portal/Congreso/Congreso/Di
 page.links.each do |link|
  puts link.text
 end
+
+
+
+
+page.links_with(href: /fichaDiputado/).each do |link|
+ puts link.text
+end
 #
 # # Find somehing on the page using css selectors
 #p page.at('div.listado1')

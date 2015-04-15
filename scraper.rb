@@ -25,8 +25,8 @@ nombe_dip = page.search('div.nombredip').text
 #twitter_dip = page.searc()
 curriculum = page.search('div.curriculum')
 
-email = div.search('a[href*=mailto]').text.strip
-puts email
+email_dip = curriculum.search('a[href*=mailto]').text.strip
+puts "#{nombre_dip} #{email_dip}"
 
 #
 # # Find somehing on the page using css selectors

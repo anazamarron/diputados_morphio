@@ -24,7 +24,7 @@ diputados_link.each do |diputado|
   nombre_dip = page.search('div.nombre_dip').text
   curriculum = page.search('div#curriculum')
   
-  twitter_dip = curriculum.search('a[href*=twitter]')
+  twitter_dip = curriculum.links_with(href: /twitter/)
   twitter = twitter_dip ? twitter_dip.href : '-'
   email_dip = curriculum.search('a[href*=mailto]')
   email = email_dip ? email_dip.text.strip : '-'

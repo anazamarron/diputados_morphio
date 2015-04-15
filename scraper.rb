@@ -24,7 +24,8 @@ page = agent.get("http://www.congreso.es/portal/page/portal/Congreso/Congreso/Di
 nombe_dip = page.search('div.nombredip').text
 #twitter_dip = page.searc()
 curriculum = page.search('div.curriculum')
-email = curriculum.search(href: /mailto/).text
+
+email = div.search('a[href*=mailto]').text.strip
 puts email
 
 #
